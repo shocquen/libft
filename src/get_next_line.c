@@ -6,14 +6,13 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 12:18:48 by shocquen          #+#    #+#             */
-/*   Updated: 2021/12/18 16:45:12 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:32:43 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
 
-static char	*ft_set_mem(char *mem, int fd)
+static char	*ft_gnl_memset(char *mem, int fd)
 {
 	char	buff[BUFFER_SIZE + 1];
 	int		csr;
@@ -25,12 +24,12 @@ static char	*ft_set_mem(char *mem, int fd)
 		if (csr < 0)
 			return (NULL);
 		buff[csr] = 0;
-		mem = ft_strjoin(mem, buff);
+		mem = ft_gnl_strjoin(mem, buff);
 	}
 	return (mem);
 }
 
-char	*ft_cur_line(char *str)
+static char	*ft_cur_line(char *str)
 {
 	char		*ret;
 	int			i;
@@ -58,7 +57,7 @@ char	*ft_cur_line(char *str)
 	return (ret);
 }
 
-char	*ft_next_line(char *str)
+static char	*ft_next_line(char *str)
 {
 	char		*ret;
 	int			i;
@@ -72,7 +71,7 @@ char	*ft_next_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) - i));
+	ret = (char *)malloc(sizeof(char) * (ft_gnl_strlen(str) - i));
 	if (!ret)
 		return (NULL);
 	j = i + 1;
@@ -90,7 +89,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	mem = ft_set_mem(mem, fd);
+	mem = ft_gnl_memset(mem, fd);
 	if (!mem)
 	{
 		free(mem);

@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 12:23:30 by shocquen          #+#    #+#             */
-/*   Updated: 2021/12/18 16:00:03 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:29:08 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
+int		ft_gnl_strlen(const char *s);
 int		ft_gnl_strchr(const char *str, char c);
 char	*get_next_line(int fd);
 char	*ft_gnl_strjoin(char *s1, char const *s2);
